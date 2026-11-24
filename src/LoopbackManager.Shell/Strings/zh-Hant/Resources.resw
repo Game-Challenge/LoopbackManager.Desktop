@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <data name="AppName" xml:space="preserve">
+    <value>網路回環管理器</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>管理應用程式的本機網路回環豁免。</value>
+  </data>
+  <data name="LoadFailed" xml:space="preserve">
+    <value>載入應用程式失敗</value>
+  </data>
+  <data name="LoadErrorAccessDeniedHelp" xml:space="preserve">
+    <value>系統拒絕存取網路隔離設定。請使用系統管理員帳戶，並檢查安全性軟體或組織原則是否封鎖 Windows 防火牆 API，然後重試。</value>
+  </data>
+  <data name="LoadErrorDetails" xml:space="preserve">
+    <value>錯誤詳細資料</value>
+  </data>
+  <data name="LoadErrorFirewallServiceHelp" xml:space="preserve">
+    <value>Windows 防火牆服務無法使用。請在「服務」中確認「Base Filtering Engine」與「Windows Defender 防火牆」已啟動；若遭安全性軟體或組織原則停用，請先還原相關設定再重試。</value>
+  </data>
+  <data name="LoadErrorInvalidConfigurationHelp" xml:space="preserve">
+    <value>Windows 傳回了無效的 AppContainer 或 SID 設定。請重新啟動 Windows 並安裝系統更新；若仍失敗，請使用 DISM 與 SFC 修復系統元件。</value>
+  </data>
+  <data name="LoadErrorMissingComponentHelp" xml:space="preserve">
+    <value>所需的 Windows 網路隔離元件遺失或不相容。請安裝系統更新，然後以系統管理員身分執行「DISM /Online /Cleanup-Image /RestoreHealth」與「sfc /scannow」，完成後重新啟動 Windows。</value>
+  </data>
+  <data name="LoadErrorResourceExhaustedHelp" xml:space="preserve">
+    <value>Windows 沒有足夠的記憶體讀取應用程式清單。請關閉部分應用程式或重新啟動 Windows，然後重試。</value>
+  </data>
+  <data name="LoadErrorUnknownHelp" xml:space="preserve">
+    <value>請先重試；若仍失敗，請重新啟動 Windows，並確認「Base Filtering Engine」與「Windows Defender 防火牆」服務正常。回報問題時請附上下方錯誤詳細資料。</value>
+  </data>
+  <data name="LoadErrorUnsupportedSystemHelp" xml:space="preserve">
+    <value>目前的 Windows 環境不支援網路隔離介面。請安裝系統更新；若使用精簡版系統，請還原 Windows 防火牆元件。</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>正在載入…</value>
+  </data>
+  <data name="NoApps" xml:space="preserve">
+    <value>找不到任何應用程式</value>
+  </data>
+  <data name="NoSearchResults" xml:space="preserve">
+    <value>找不到符合的應用程式</value>
+  </data>
+  <data name="OpenWorkDirectory" xml:space="preserve">
+    <value>打開工作目錄</value>
+  </data>
+  <data name="PartialLoadFallbackMessage" xml:space="preserve">
+    <value>Windows 無法批次列舉 AppContainer，已切換到逐套件相容模式；目前已顯示所有可讀取的應用程式。</value>
+  </data>
+  <data name="PartialLoadFallbackSkippedMessage" xml:space="preserve">
+    <value>Windows 無法批次列舉 AppContainer，已切換到逐套件相容模式，並略過了 {0} 個無法讀取的套件。</value>
+  </data>
+  <data name="PartialLoadSkippedMessage" xml:space="preserve">
+    <value>有 {0} 個應用程式項目的資訊無效，已將其略過；其餘應用程式仍正常顯示。</value>
+  </data>
+  <data name="PartialLoadTitle" xml:space="preserve">
+    <value>部分應用程式未能載入</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>重新整理</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重設</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>重試</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>已儲存</value>
+  </data>
+  <data name="SaveFailedMessage" xml:space="preserve">
+    <value>無法儲存您的變更，請再試一次。</value>
+  </data>
+  <data name="SaveFailedTitle" xml:space="preserve">
+    <value>無法儲存變更</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>正在儲存…</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>搜尋應用程式</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>全選</value>
+  </data>
+</root>

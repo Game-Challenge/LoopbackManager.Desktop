@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- OS WinRT APIs and the Windows 10 2004 minimum supported by Sprout. -->
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>preview</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <!-- Sprout also uses the embedded executable icon for the window and taskbar. -->
+    <ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+
+    <!-- Publishing compiles native code and packages the same output as MSIX. -->
+    <PublishAot>true</PublishAot>
+    <SproutPackageFormat>Msix</SproutPackageFormat>
+    <SproutAppxVersion>2.2609.6.0</SproutAppxVersion>
+
+    <!-- Bundle the non-UI runtime used by ApplicationData; Debug runs unpackaged, Release uses package identity. -->
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <!-- An explicit publish RID overrides the host architecture used for development. -->
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">$(NETCoreSdkRuntimeIdentifier)</RuntimeIdentifier>
+    <SproutDefaultLanguage>en-US</SproutDefaultLanguage>
+    <SproutVersion>0.1.0-rodel.105.1.g5af5aae144af</SproutVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Assets\Logo\**" />
+    <EmbeddedResource Remove="Assets\Logo\**" />
+    <None Remove="Assets\Logo\**" />
+    <PRIResource Remove="Assets\Logo\**" />
+    <Content Include="Assets\Logo\**\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\logo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Foundation supplies Microsoft.Windows.Storage.ApplicationData. No WinUI dependency. -->
+    <PackageReference Include="Microsoft.WindowsAppSDK.Foundation" Version="2.3.12" />
+    <!-- Foundation's 2.1.8 minimum is unavailable; use the compatible published dependency explicitly. -->
+    <PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="2.1.9" />
+
+    <PackageReference Include="Sprout" Version="$(SproutVersion)" />
+    <PackageReference Include="Sprout.Backend.D2D" Version="$(SproutVersion)" />
+
+    <PackageReference Include="Sprout.FluentIcon" Version="$(SproutVersion)" />
+    <PackageReference Include="Sprout.Packaging" Version="$(SproutVersion)" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,51 @@
+﻿using Sprout;
+using Sprout.Controls;
+using Sprout.Graphics;
+using Sprout.Layout;
+using Sprout.Reconcile;
+using Sprout.Theming;
+using static Sprout.Markup;
+
+namespace LoopbackManager.Shell.Controls;
+
+public sealed partial class AppCard : Control
+{
+    private AppItemStore _itemStore;
+
+    public AppCard(AppItemStore itemStore) => _itemStore = itemStore;
+
+    // Recycled rows must follow the current store, including a refresh with the same SID.
+    public void SetItem(AppItemStore itemStore)
+    {
+        if (ReferenceEquals(_itemStore, itemStore))
+        {
+            return;
+        }
+
+        _itemStore = itemStore;
+        RequestBodyReconcile();
+    }
+
+    public Ui Body => Grid(
+        [GridLength.Star(), GridLength.Auto],
+        [GridLength.Auto],
+        [
+            CheckBox(
+                Column([
+                    Text(_itemStore.DisplayName).Trim(TextTrimming.CharacterEllipsis).TooltipWhenTrimmed(),
+                    Text(_itemStore.PackageFullName).FontSize(12).Foreground(Brush.Theme(ThemeColorToken.TextFillColorSecondary)).Trim(TextTrimming.CharacterEllipsis).TooltipWhenTrimmed()
+                ]).Spacing(2),
+                _itemStore.IsLoopback,
+                _itemStore.Toggle).ContentSpacing(12f).HorizontalContentAlignment(HorizontalAlignment.Stretch).Automation(new() { Name = _itemStore.DisplayName }).VAlign(VerticalAlignment.Center).Cell(0, 0),
+            Button(Icon.Fluent(FluentSymbol.Folder, size: 14), _itemStore.OpenFolder)
+                .Enabled(_itemStore.CanOpenFolder)
+                .Automation(new()
+                {
+                    Name = Resources.OpenWorkDirectory,
+                    AutomationId = $"OpenFolderButton_{_itemStore.ContainerName}",
+                })
+                .ToolTip(Resources.OpenWorkDirectory)
+                .VAlign(VerticalAlignment.Center).HAlign(HorizontalAlignment.Right).Cell(1, 0),
+        ]
+    ).Padding(12, 8).ColumnSpacing(12).Background(Brush.Theme(ThemeColorToken.CardBackgroundFillColorDefault)).CornerRadius(4f);
+}
